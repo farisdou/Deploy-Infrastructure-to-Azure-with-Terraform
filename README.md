@@ -1,6 +1,7 @@
 # Deploy Infrastructure to Azure with Terraform
 
 Video Implentation:
+https://youtube.com/live/WPvUa9-Txt8?feature=share
 
 
 ---
