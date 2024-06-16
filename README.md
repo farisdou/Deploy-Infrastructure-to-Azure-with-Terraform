@@ -169,12 +169,8 @@ source_content = "<h1> Salute, this website is deployed using terraform."
 So when we replace the variables in main.tf the code is cleaner. 
 
 ``` 
-provider "azurerm" {
-    features {}
-}
-
 # Create a resource group
-resource "azurerm_resource_group" "resource_group" {
+resource "azurerm_resource_group" "tf-state-rg" {
     name = var.resource_group_name
     location = var.location
 }
@@ -182,28 +178,36 @@ resource "azurerm_resource_group" "resource_group" {
 # Create a Storage Account
 resource "azurerm_storage_account" "storage_account" {
     name = var.storage_account_name
-    resource_group_name = azurerm_resource_group.resource_group.name
-    location = azurerm_resource_group.resource_group.location
+    resource_group_name = azurerm_resource_group.tf-state-rg.name
     account_tier ="Standard"
+    location = var.location
     account_replication_type = "LRS"
     account_kind = "StorageV2"
 
     static_website {
-      index_document = "index.html"
+      index_document = var.index_document
     }
 }
 
 # Add index.html file
-resource "azurerm_storage_blob" "blob" {
+resource "azurerm_storage_blob" "tfstatecon" {
     name = var.index_document
     storage_account_name = azurerm_storage_account.storage_account.name
     storage_container_name = "$web" 
     type = "Block"
     content_type = "text/html"
     source_content = var.source_content
-}
 ``` 
-- ### Upload File
+
+
+- ### Alternative Path
+- Upload terraform files into azure and init terraform, plan,
+![image](https://github.com/FarisDou/Deploy-Infrastructure-to-Azure-with-Terraform/assets/109401839/311d96c9-4ced-4157-9711-f0f43567f7e9)
+
+terrafrom apply 
+enter values
+accept actions: yes
+
 - ### Terraform Destroy
 - ### Conclusion
 
