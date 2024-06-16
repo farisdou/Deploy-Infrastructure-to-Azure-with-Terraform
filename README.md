@@ -203,8 +203,7 @@ resource "azurerm_storage_blob" "blob" {
     source_content = var.source_content
 }
 ``` 
+- ### Upload File
 - ### Terraform Destroy
-
-
 - ### Conclusion
 
