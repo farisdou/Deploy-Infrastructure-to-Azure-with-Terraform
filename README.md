@@ -198,17 +198,17 @@ resource "azurerm_storage_blob" "tfstatecon" {
     type = "Block"
     content_type = "text/html"
     source_content = var.source_content
-``` 
+```
 
-
-- ### Alternative Path
-- Upload terraform files into azure and init terraform, plan,
+- Upload terraform files into azure and init terraform, plan, deploy your infrastructure and destroy.
+  
 ![image](https://github.com/FarisDou/Deploy-Infrastructure-to-Azure-with-Terraform/assets/109401839/311d96c9-4ced-4157-9711-f0f43567f7e9)
 
-terrafrom apply 
-enter values
-accept actions: yes
+### Conclusion
 
-- ### Terraform Destroy
-- ### Conclusion
+Overall this project helped me understand the fundamentals of terraform and will be used in the future to automate previous projects. 
+I really enjoy creating this project, however I had a lot of issues with the Azure CLI configuration to my IDE that took up 50% of my troubleshooting time. 
+A quicker way was to do terraform fmt to properly format the terraform files.Afterwards, use terraform validate to ensure there are no problems in the files. 
+I decided to upload the files to Azure CLI on the website rather than my IDEand initialise, plan, deploy my infrastructure on the Azure CLI.
+In the future I would like to fix my configuration between the IDE and CLI. 
 
